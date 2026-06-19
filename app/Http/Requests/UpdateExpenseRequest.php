@@ -11,9 +11,7 @@ class UpdateExpenseRequest extends FormRequest
         return true;
     }
 
-    /**
-     * @return array<string, array<int, string>>
-     */
+
     public function rules(): array
     {
         return [
@@ -23,4 +21,11 @@ class UpdateExpenseRequest extends FormRequest
         ];
     }
 
+    public function validatedWithDefaults(): array
+    {
+        $data = $this->validated();
+        $data['date'] ??= now()->toDateString();
+
+        return $data;
+    }
 }

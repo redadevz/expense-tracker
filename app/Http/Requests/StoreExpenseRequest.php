@@ -15,17 +15,22 @@ class StoreExpenseRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
+
     public function rules(): array
     {
         return [
             'description' => ['required', 'string', 'max:255'],
             'amount'      => ['required', 'numeric', 'min:0.01', 'max:99999999.99'],
-            'date' => ['required', 'date'],
+            'date'        => ['nullable', 'date'],
         ];
+    }
+
+ 
+    public function validatedWithDefaults(): array
+    {
+        $data = $this->validated();
+        $data['date'] ??= now()->toDateString();
+
+        return $data;
     }
 }

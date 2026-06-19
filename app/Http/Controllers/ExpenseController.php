@@ -32,14 +32,14 @@ class ExpenseController extends Controller
 
     public function store(StoreExpenseRequest $request){
 
-        Expense::create($request->validated());
+        Expense::create($request->validatedWithDefaults());
 
         return back()->with('success', 'Expense added successfully');
     }
 
 
     public function update(UpdateExpenseRequest $request, Expense $expense){
-        $expense->update($request->validated());
+        $expense->update($request->validatedWithDefaults());
 
         return back()->with('success', 'Expense updated successfully'); 
     }
