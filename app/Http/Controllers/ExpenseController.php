@@ -15,13 +15,13 @@ class ExpenseController extends Controller
 {
     public function index(Request $request){
 
-        $month = $request->query('month');
-        
+        $month = $request->integer('month') ?: null;
+
         return Inertia::render('Expenses/Index', [
             'expenses' => Expense::orderBy('date', 'desc')->get(),
-            'total' => Expense::sum('amount'),
-            'month' => $month ? $month : null,
-            'monthTotal' => $month ? Expense::query()
+            'total' => (float) Expense::sum('amount'),
+            'month' => $month,
+            'monthTotal' => $month ? (float) Expense::query()
                 ->whereYear('date', now()->year)
                 ->whereMonth('date', $month)
                 ->sum('amount') : null,
