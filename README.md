@@ -1,5 +1,5 @@
 **Project Link**
- Link : https://roadmap.sh/projects/expense-tracker
+ https://roadmap.sh/projects/expense-tracker
 
 **Project Description**
  Expense Tracker is a web application that allows users to track their expenses and manage their financial goals. The application provides a user-friendly interface for adding, editing, and deleting expenses, as well as viewing and analyzing their financial data. It also includes features such as categorizing expenses, setting budgets, and generating reports.
